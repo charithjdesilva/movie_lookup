@@ -1,4 +1,6 @@
 import {useEffect} from "react";
+import './App.css';
+import SearchIcon from './search.svg'
 
 const API_URL = 'http://www.omdbapi.com?apikey=b602e60'
 
@@ -23,7 +25,21 @@ const App = () => {
     },[]);
 
     return (
-        <h1>Title</h1>
+        <div className="app">
+            <h1>Movie Lookup</h1>
+
+            <div className="search">
+                <input
+                placeholder="Search for a movie"
+                value="Batman"
+                onChange={() => {}}
+                 />
+                <img
+                src={SearchIcon}
+                alt="search"
+                onClick={() => {}} />
+            </div>
+        </div>
     );
 }
 
