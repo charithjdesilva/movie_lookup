@@ -16,8 +16,14 @@ const App = () => {
         setMovies(data.Search);
     }
 
+    const handleKeyDownSearch = (evt) => {
+         if(evt.key === 'Enter'){
+            searchMovies(searchTerm);
+         }
+    }
+
     useEffect(() => {
-        searchMovies("batman");
+        searchMovies("avengers");
     },[]);
 
     return (
@@ -28,7 +34,8 @@ const App = () => {
                 <input
                 placeholder="Search for a movie"
                 value= {searchTerm}
-                onChange={(e) => {setSearchTerm(e.target.value)}}
+                onChange={(evt) => {setSearchTerm(evt.target.value)}}
+                onKeyDown={handleKeyDownSearch}
                  />
                 <img
                 src={SearchIcon}
@@ -37,11 +44,11 @@ const App = () => {
             </div>
 
             {
-                movies.length > 0?
+                movies?.length > 0?
                 (<div className="container">
                     {movies.map((movie) => <MovieCard movie={movie} />)}
                 </div>):(
-                    <div>
+                    <div className="empty">
                         <h2>No movies found.</h2>
                     </div>
                 )
